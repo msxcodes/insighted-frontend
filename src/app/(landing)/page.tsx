@@ -4,7 +4,6 @@ import Footer from "@/components/landing/Footer";
 import { Navbar } from "@/components/landing/Navbar";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
-
 const Loader = () => (
   <div className="min-h-[60vh] flex items-center justify-center bg-gray-50/5">
     <div className="relative w-full max-w-sm h-12 rounded-md overflow-hidden">

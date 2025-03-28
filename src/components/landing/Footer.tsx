@@ -31,7 +31,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="py-16 relative overflow-hidden">
+    <footer className="pb-4 relative overflow-hidden">
       <MaxWidthWrapper>
         <motion.div
           variants={variants}
@@ -40,7 +40,7 @@ const Footer = () => {
           className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4"
         >
           <p className="text-sm text-gray-400 text-center">
-            © {new Date().getFullYear()} Byto. All rights reserved.
+            © {new Date().getFullYear()} InsightsED. All rights reserved.
           </p>
 
           <div className="flex items-center gap-4">

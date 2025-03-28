@@ -18,7 +18,7 @@ export function Hero() {
 
     return (
         <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
-            <MaxWidthWrapper className="relative z-10 mb-8 md:mb-12 mt-0 md:mt-12">
+            <MaxWidthWrapper className="relative z-10 md:mb-12 mt-0 md:mt-12">
                 <div className="flex flex-col items-center justify-center text-center px-4 sm:px-6">
                     <motion.div
                         initial="hidden"
@@ -119,6 +119,16 @@ export function Hero() {
                         </div>
                     </motion.div>
                 </div>
+                <motion.div
+                    initial={{ scaleX: 0 }}
+                    animate={controls}
+                    variants={{
+                        hidden: { scaleX: 0 },
+                        visible: { scaleX: 1 },
+                    }}
+                    transition={{ duration: 1.5, delay: 0.5 }}
+                    className="mt-12 md:mt-20 h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent"
+                />
             </MaxWidthWrapper>
         </section>
     )

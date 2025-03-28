@@ -17,40 +17,40 @@ const AboutSection: React.FC = () => {
   const points = [
     {
       icon: Cloud,
-      title: "Simplicity",
+      title: "Easy Upload",
       description:
-        "Cloud storage that adapts to your needs, personal or professional.",
+        "Simply paste any educational video link and let our AI do the work.",
       details:
-        "Our intuitive interface makes file management a breeze. Whether you're storing personal memories or collaborating on professional projects, Byto's adaptive storage solutions cater to all your needs with unparalleled ease.",
+        "Whether it's a university lecture, online course, or educational content from platforms like YouTube, our system processes videos instantly. Just share the link, and we'll transform it into comprehensive study materials within minutes.",
     },
     {
       icon: Shield,
-      title: "Security",
+      title: "Smart Summary",
       description:
-        "Advanced encryption and flexible options to keep your data safe.",
+        "AI-powered technology that captures key concepts and important details.",
       details:
-        "We employ state-of-the-art encryption protocols to ensure your data remains private and secure. With customizable sharing controls and temporary storage options, you have full control over who accesses your files and for how long.",
+        "Our advanced AI analyzes the video content, identifies crucial information, and creates well-structured notes. The summaries include main topics, key points, definitions, and examples, making it perfect for quick revision and deep understanding.",
     },
     {
       icon: Zap,
-      title: "Speed",
+      title: "Practice Ready",
       description:
-        "Lightning-fast uploads and downloads for seamless file management.",
+        "Automatically generated MCQs to test your understanding.",
       details:
-        "Experience the power of rapid file transfers with Byto. Our optimized infrastructure ensures that your files are uploaded, downloaded, and synced across devices at breakneck speeds, saving you valuable time and enhancing productivity.",
+        "Turn passive watching into active learning with our AI-generated multiple-choice questions. Each set of questions is carefully crafted to test your comprehension of the video content, helping you prepare for exams and assessments effectively.",
     },
     {
       icon: Users,
-      title: "Community",
-      description: "Join early and shape the future of cloud storage with us.",
+      title: "Learning Community",
+      description: "Join a community of students and educators enhancing their learning experience.",
       details:
-        "As an early adopter, you'll have a unique opportunity to influence the development of Byto. Enjoy exclusive features, priority support, and be part of a growing community that's redefining the future of cloud storage.",
+        "Connect with fellow learners, share valuable educational content, and collaborate on study materials. Our platform makes it easier to learn together and maximize the benefits of online educational content.",
     },
   ];
 
   return (
-    <section className="relative overflow-hidden py-12 md:py-24" id="about">
-      <MaxWidthWrapper className="py-10 md:py-20">
+    <section className="relative overflow-hidden py-12 md:py-20" id="about">
+      <MaxWidthWrapper className="">
         <div className="container relative px-4 sm:px-6">
           <motion.div
             initial="hidden"
@@ -64,21 +64,21 @@ const AboutSection: React.FC = () => {
             </div>
             <h2 className="mb-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
               <span className="bg-gradient-to-r from-blue-400 via-teal-400 to-green-400 bg-clip-text text-transparent drop-shadow">
-                About Byto
+                About InsightsED
               </span>
             </h2>
             <p className="text-lg md:text-xl text-gray-300 leading-relaxed mt-4 md:mt-6 font-medium">
-              At Byto, we&apos;re redefining cloud storage with a focus on{" "}
+              We&apos;re transforming video lectures into{" "}
               <span className="bg-gradient-to-r from-teal-400 to-green-400 bg-clip-text text-transparent">
-                simplicity
+                smart notes
               </span>
               ,{" "}
               <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
-                security
+                practice questions
               </span>
               , and{" "}
               <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
-                speed
+                learning tools
               </span>
               .
             </p>
@@ -104,7 +104,7 @@ const AboutSection: React.FC = () => {
                       {point.title}
                     </h3>
                   </div>
-                  <p className="text-gray-300 mb-3 md:mb-4 font-medium text-sm md:text-base">
+                  <p className="text-gray-300 mb-3 md:mb-4 font-medium text-sm md:text-base truncate">
                     {point.description}
                   </p>
                   <motion.button
@@ -119,8 +119,8 @@ const AboutSection: React.FC = () => {
                     Learn More
                     <ChevronDown
                       className={`ml-2 transform transition-transform duration-200 ${expandedPoint === index
-                          ? "rotate-180 text-teal-400"
-                          : ""
+                        ? "rotate-180 text-teal-400"
+                        : ""
                         }`}
                     />
                   </motion.button>
@@ -150,21 +150,24 @@ const AboutSection: React.FC = () => {
             className="relative bg-gradient-to-br from-blue-500/15 to-teal-500/15 rounded-xl md:rounded-2xl p-6 md:p-8 border border-white/10"
           >
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 md:mb-4 bg-gradient-to-r from-teal-400 to-green-400 bg-clip-text text-transparent">
-              Our Commitment
+              Our Technology
             </h3>
             <p className="text-gray-300 text-base md:text-lg leading-relaxed font-medium">
-              We understand the importance of your data. That&apos;s why Byto
-              offers <span className="text-teal-400">advanced encryption</span>,{" "}
-              <span className="text-blue-400">temporary storage options</span>,
+              Powered by advanced AI, InsightsED transforms educational videos into comprehensive study materials. With{" "}
+              <span className="text-teal-400">smart summarization</span>,{" "}
+              <span className="text-blue-400">intelligent question generation</span>,
               and{" "}
               <span className="text-green-400">
-                cross-platform compatibility
+                structured learning content
               </span>
-              . Your data remains yours—we&apos;re just the safe and reliable
-              vault you can trust.
+              , we're making online education more effective and engaging.
             </p>
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
-              {["256-bit AES", "99.9% Uptime", "5s Sync Speed"].map((item) => (
+              {[
+                "98% Accuracy",
+                "5min Processing",
+                "24/7 Learning"
+              ].map((item) => (
                 <div
                   key={item}
                   className="bg-white/5 rounded-lg p-3 md:p-4 text-center"
