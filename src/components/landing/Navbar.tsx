@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState, useCallback, useTransition, useEffect } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Rocket, LayoutDashboard, LogOut } from "lucide-react";
+import { Menu, X, Rocket, } from "lucide-react";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { NavbarProps, NavItem } from "@/types/nav";
 import MaxWidthWrapper from "../common/MaxWidthWrapper";
@@ -91,7 +90,7 @@ export function Navbar({ className }: NavbarProps) {
 
   const AuthButton = () => {
     return (
-      <Link href="/sign-in">
+      <Link href="/upload">
         <Button
           variant="ghost"
           className="group relative bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 backdrop-blur-lg border border-white/10 hover:border-cyan-400/30 hover:from-cyan-500/30 hover:to-emerald-500/30 transition-all duration-300"

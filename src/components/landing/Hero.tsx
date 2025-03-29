@@ -5,10 +5,12 @@ import { motion, useAnimation } from "framer-motion"
 import Image from "next/image"
 import MaxWidthWrapper from "../common/MaxWidthWrapper"
 import { Sparkles, Video, FileText, Brain, ArrowRight } from "lucide-react"
-
+import { useRouter } from "next/navigation"
 export function Hero() {
     const controls = useAnimation()
     const [isLoaded, setIsLoaded] = useState(true)
+
+    const router = useRouter()
 
     useEffect(() => {
         if (isLoaded) {
@@ -84,7 +86,7 @@ export function Hero() {
                         transition={{ duration: 0.6, delay: 0.6 }}
                         className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
                     >
-                        <button className="px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-emerald-500 text-white font-medium flex items-center gap-2 hover:scale-105 transition-transform">
+                        <button onClick={() => router.push("/upload")} className="px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-emerald-500 text-white font-medium flex items-center gap-2 hover:scale-105 transition-transform">
                             Get Started Free
                             <ArrowRight className="h-4 w-4" />
                         </button>

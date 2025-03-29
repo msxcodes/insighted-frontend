@@ -149,7 +149,7 @@ const AboutSection: React.FC = () => {
             transition={{ duration: 0.3, delay: 0.4 }}
             className="relative bg-gradient-to-br from-blue-500/15 to-teal-500/15 rounded-xl md:rounded-2xl p-6 md:p-8 border border-white/10"
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 md:mb-4 bg-gradient-to-r from-teal-400 to-green-400 bg-clip-text text-transparent">
+            <h3 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 bg-gradient-to-r from-teal-400 to-green-400 bg-clip-text text-transparent">
               Our Technology
             </h3>
             <p className="text-gray-300 text-base md:text-lg leading-relaxed font-medium">
