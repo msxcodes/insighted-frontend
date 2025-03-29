@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Clock } from "lucide-react";
 import SwitchTab from "@/components/upload/switch-tab";
 import LinkVideoSection from "@/components/upload/link-video";
 import UploadVideoSection from "@/components/upload/upload-video";
@@ -13,7 +12,7 @@ export default function Dashboard() {
   const [isHovering, setIsHovering] = useState(false);
   const [uploadMethod, setUploadMethod] = useState<'link' | 'video'>('link');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [currentStep, setCurrentStep] = useState<number>(3);
+  const [currentStep, setCurrentStep] = useState<number>(2);
   return (
     <motion.main
       initial={{ opacity: 0, y: 20 }}
@@ -69,9 +68,9 @@ export default function Dashboard() {
               transition={{ duration: 0.2 }}
             >
               {uploadMethod === 'link' ? (
-                <LinkVideoSection setIsModalOpen={setIsModalOpen} />
+                <LinkVideoSection setIsModalOpen={setIsModalOpen} setCurrentStep={setCurrentStep} />
               ) : (
-                <UploadVideoSection />
+                <UploadVideoSection setIsModalOpen={setIsModalOpen} setCurrentStep={setCurrentStep} />
               )}
             </motion.div>
           </div>
@@ -80,6 +79,8 @@ export default function Dashboard() {
         {/* Enhanced Disclaimers */}
         <ImportantWarning />
       </div>
+
+      {/* Status Modal */}
       {isModalOpen && <StatusModal isOpen={isModalOpen} currentStep={currentStep} onClose={() => setIsModalOpen(false)} />}
     </motion.main>
   );

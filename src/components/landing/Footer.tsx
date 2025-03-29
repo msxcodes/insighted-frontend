@@ -1,11 +1,10 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { Github, Linkedin, Cloud } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import MaxWidthWrapper from "../common/MaxWidthWrapper";
-import { ABOUT_URL, FEATURES_URL, GITHUB_URL, LINKEDIN_URL } from "@/lib/utils";
+import { GITHUB_URL, LINKEDIN_URL } from "@/lib/utils";
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 
 const socialLinks = [

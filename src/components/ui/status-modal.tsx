@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, Loader2, Brain, FileText, MessageSquare, Notebook } from 'lucide-react';
+import { CheckCircle2, Loader2, Brain, FileText, Notebook } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 interface StatusModalProps {
     isOpen: boolean;
@@ -43,7 +43,7 @@ export default function StatusModal({ isOpen, currentStep, onClose }: StatusModa
                 router.push("/results");
             }, 3000);
         }
-    }, [isOpen]);
+    }, [isOpen, router]);
 
     return (
         <AnimatePresence>

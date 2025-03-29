@@ -3,9 +3,10 @@ import { Youtube } from 'lucide-react'
 
 interface LinkVideoSectionProps {
     setIsModalOpen: (isOpen: boolean) => void;
+    setCurrentStep: (step: number) => void;
 }
 
-export default function LinkVideoSection({ setIsModalOpen }: LinkVideoSectionProps) {
+export default function LinkVideoSection({ setIsModalOpen, setCurrentStep }: LinkVideoSectionProps) {
 
     return (
         <div className="space-y-4">
@@ -18,7 +19,10 @@ export default function LinkVideoSection({ setIsModalOpen }: LinkVideoSectionPro
                 <Youtube className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500" />
             </div>
             <motion.button
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => {
+                    setIsModalOpen(true);
+                    setCurrentStep(3);
+                }}
                 whileHover={{ scale: 1.02, boxShadow: "0 0 20px rgba(6, 182, 212, 0.3)" }}
                 whileTap={{ scale: 0.98 }}
                 className="w-full py-3 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-lg font-medium text-white hover:opacity-90 transition-all duration-300"

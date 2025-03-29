@@ -160,7 +160,7 @@ const AboutSection: React.FC = () => {
               <span className="text-green-400">
                 structured learning content
               </span>
-              , we're making online education more effective and engaging.
+              , we&apos;re making online education more effective and engaging.
             </p>
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
               {[

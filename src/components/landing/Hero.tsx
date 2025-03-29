@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { motion, useAnimation } from "framer-motion"
 import Image from "next/image"
 import MaxWidthWrapper from "../common/MaxWidthWrapper"
-import { Sparkles, Video, FileText, Brain, ArrowRight } from "lucide-react"
+import { Sparkles, ArrowRight } from "lucide-react"
 import { useRouter } from "next/navigation"
 export function Hero() {
     const controls = useAnimation()

@@ -1,12 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Download, FileText, Eye, Brain, ArrowRight, Lock, Maximize2 } from "lucide-react";
-import { useState } from "react";
+import { Download, FileText, Brain, ArrowRight, Lock, Maximize2 } from "lucide-react";
 
 export default function ResultsPage() {
-    const [activeTab, setActiveTab] = useState<'notes' | 'mcq'>('notes');
-    const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+    // const [activeTab, setActiveTab] = useState<'notes' | 'mcq'>('notes');
+    // const [isPreviewOpen, setIsPreviewOpen] = useState(true);
+
 
     return (
         <motion.main
@@ -75,7 +75,7 @@ export default function ResultsPage() {
                             </div>
                             <button
                                 className="absolute bottom-4 right-4 p-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors"
-                                onClick={() => setIsPreviewOpen(true)}
+                            // onClick={() => setIsPreviewOpen(true)}
                             >
                                 <Maximize2 className="w-4 h-4 text-gray-400" />
                             </button>

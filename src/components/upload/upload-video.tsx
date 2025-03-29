@@ -2,7 +2,12 @@ import { motion } from 'framer-motion'
 import { Upload } from 'lucide-react'
 import React from 'react'
 
-export default function UploadVideoSection() {
+interface UploadVideoSectionProps {
+    setIsModalOpen: (isModalOpen: boolean) => void;
+    setCurrentStep: (currentStep: number) => void;
+}
+
+export default function UploadVideoSection({ setIsModalOpen, setCurrentStep }: UploadVideoSectionProps) {
     return (
         <motion.div
             className="space-y-4"
@@ -29,6 +34,10 @@ export default function UploadVideoSection() {
             <button
                 disabled
                 className="w-full py-3 bg-gray-800 rounded-lg font-medium text-gray-500 cursor-not-allowed opacity-50"
+                onClick={() => {
+                    setIsModalOpen(true);
+                    setCurrentStep(3);
+                }}
             >
                 Upload & Convert
             </button>
