@@ -105,7 +105,7 @@ export function Hero() {
                         transition={{ duration: 0.6, delay: 0.6 }}
                         className="mt-8 md:mt-12 w-full max-w-5xl lg:max-w-7xl px-4 sm:px-6"
                     >
-                        <div className="relative aspect-video bg-gradient-to-br from-cyan-500/10 to-emerald-500/10 rounded-xl md:rounded-3xl border border-white/10 backdrop-blur-sm overflow-hidden">
+                        <div className="relative aspect-video bg-gradient-to-br from-cyan-500/10 to-emerald-500/10 rounded-xl md:rounded-3xl border border-white/10 backdrop-blur-sm p-1.5 overflow-hidden">
                             <Image
                                 src="/insightsed.png"
                                 alt="InsightsED AI Learning Platform"
@@ -113,7 +113,7 @@ export function Hero() {
                                 height={1080}
                                 quality={75}
                                 loading="eager"
-                                className="object-contain object-top scale-95 md:scale-95 rounded-lg"
+                                className="object-contain object-top rounded-xl"
                                 priority
                                 onLoad={() => setIsLoaded(true)}
                             />
