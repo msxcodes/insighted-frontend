@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, Loader2, Brain, FileText, Notebook } from 'lucide-react';
-import { useRouter } from 'next/navigation';
 interface StatusModalProps {
     isOpen: boolean;
     currentStep: number;
@@ -34,16 +33,6 @@ const steps = [
 
 
 export default function StatusModal({ isOpen, currentStep, onClose }: StatusModalProps) {
-
-    const router = useRouter();
-
-    useEffect(() => {
-        if (isOpen) {
-            setTimeout(() => {
-                router.push("/results");
-            }, 3000);
-        }
-    }, [isOpen, router]);
 
     return (
         <AnimatePresence>
