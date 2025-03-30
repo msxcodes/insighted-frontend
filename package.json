@@ -1,5 +1,5 @@
 {
-  "name": "insights-ed",
+  "name": "insight-ed",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -24,6 +24,7 @@
     "react-dom": "^19.0.0",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
+    "sonner": "^2.0.2",
     "tailwind-merge": "^3.0.2",
     "tw-animate-css": "^1.2.4"
   },

@@ -135,7 +135,7 @@ export function Navbar({ className }: NavbarProps) {
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-emerald-400 rounded-full opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300" />
               </motion.div>
               <span className="bg-gradient-to-r from-cyan-300 via-emerald-300 to-lime-300 bg-clip-text text-transparent font-bold text-2xl">
-                InsightsED
+                InsightED
               </span>
             </Link>
           </motion.div>

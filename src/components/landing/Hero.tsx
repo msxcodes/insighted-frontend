@@ -71,7 +71,7 @@ export function Hero() {
                         transition={{ duration: 0.6, delay: 0.4 }}
                         className="mt-6 md:mt-8 text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl md:max-w-3xl mx-auto font-medium"
                     >
-                        InsightsED transforms educational videos into <span className="text-cyan-300">comprehensive study notes</span>{" "}
+                        InsightED transforms educational videos into <span className="text-cyan-300">comprehensive study notes</span>{" "}
                         and <span className="text-emerald-300">practice questions</span>. Perfect for students, educators, and
                         lifelong learners.
                     </motion.p>
@@ -108,7 +108,7 @@ export function Hero() {
                         <div className="relative aspect-video bg-gradient-to-br from-cyan-500/10 to-emerald-500/10 rounded-xl md:rounded-3xl border border-white/10 backdrop-blur-sm p-1.5 overflow-hidden">
                             <Image
                                 src="/insightsed.png"
-                                alt="InsightsED AI Learning Platform"
+                                alt="InsightED AI Learning Platform"
                                 width={1920}
                                 height={1080}
                                 quality={75}
