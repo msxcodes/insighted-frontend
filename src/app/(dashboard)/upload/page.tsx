@@ -6,13 +6,22 @@ import SwitchTab from "@/components/upload/switch-tab";
 import LinkVideoSection from "@/components/upload/link-video";
 import UploadVideoSection from "@/components/upload/upload-video";
 import ImportantWarning from "@/components/upload/warning";
-import StatusModal from "@/components/ui/status-modal";
+import { MultiStepLoader } from "@/components/ui/status-modal";
+
 
 export default function Dashboard() {
   const [isHovering, setIsHovering] = useState(false);
   const [uploadMethod, setUploadMethod] = useState<'link' | 'video'>('link');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [currentStep, setCurrentStep] = useState<number>(2);
+
+  const loadingStates = [
+    { text: "Analyzing video content..." },
+    { text: "Extracting audio from video..." },
+    { text: "Converting speech to text..." },
+    { text: "Generating summary..." },
+    { text: "Formatting notes..." }
+  ];
+
   return (
     <motion.main
       initial={{ opacity: 0, y: 20 }}
@@ -68,9 +77,9 @@ export default function Dashboard() {
               transition={{ duration: 0.2 }}
             >
               {uploadMethod === 'link' ? (
-                <LinkVideoSection setIsModalOpen={setIsModalOpen} setCurrentStep={setCurrentStep} />
+                <LinkVideoSection setIsModalOpen={setIsModalOpen} />
               ) : (
-                <UploadVideoSection setIsModalOpen={setIsModalOpen} setCurrentStep={setCurrentStep} />
+                <UploadVideoSection setIsModalOpen={setIsModalOpen} />
               )}
             </motion.div>
           </div>
@@ -81,7 +90,7 @@ export default function Dashboard() {
       </div>
 
       {/* Status Modal */}
-      {isModalOpen && <StatusModal isOpen={isModalOpen} currentStep={currentStep} onClose={() => setIsModalOpen(false)} />}
+      {isModalOpen && <MultiStepLoader loadingStates={loadingStates} loading={isModalOpen} duration={2000} />}
     </motion.main>
   );
 }
