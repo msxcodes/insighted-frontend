@@ -64,7 +64,7 @@ const AboutSection: React.FC = () => {
             </div>
             <h2 className="mb-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
               <span className="bg-gradient-to-r from-blue-400 via-teal-400 to-green-400 bg-clip-text text-transparent drop-shadow">
-                About InsightsED
+                About InsightED
               </span>
             </h2>
             <p className="text-lg md:text-xl text-gray-300 leading-relaxed mt-4 md:mt-6 font-medium">
@@ -153,7 +153,7 @@ const AboutSection: React.FC = () => {
               Our Technology
             </h3>
             <p className="text-gray-300 text-base md:text-lg leading-relaxed font-medium">
-              Powered by advanced AI, InsightsED transforms educational videos into comprehensive study materials. With{" "}
+              Powered by advanced AI, InsightED transforms educational videos into comprehensive study materials. With{" "}
               <span className="text-teal-400">smart summarization</span>,{" "}
               <span className="text-blue-400">intelligent question generation</span>,
               and{" "}

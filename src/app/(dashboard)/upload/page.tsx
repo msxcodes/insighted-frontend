@@ -8,10 +8,8 @@ import UploadVideoSection from "@/components/upload/upload-video";
 import ImportantWarning from "@/components/upload/warning";
 import { MultiStepLoader } from "@/components/ui/status-modal";
 
-
 export default function Dashboard() {
-  const [isHovering, setIsHovering] = useState(false);
-  const [uploadMethod, setUploadMethod] = useState<'link' | 'video'>('link');
+  const [uploadMethod, setUploadMethod] = useState<"link" | "video">("link");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const loadingStates = [
@@ -19,7 +17,7 @@ export default function Dashboard() {
     { text: "Extracting audio from video..." },
     { text: "Converting speech to text..." },
     { text: "Generating summary..." },
-    { text: "Formatting notes..." }
+    { text: "Formatting notes..." },
   ];
 
   return (
@@ -38,9 +36,7 @@ export default function Dashboard() {
           transition={{ duration: 0.6 }}
         >
           <div className="relative inline-block">
-            <motion.h1
-              className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 via-emerald-400 to-lime-400 bg-clip-text text-transparent"
-            >
+            <motion.h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 via-emerald-400 to-lime-400 bg-clip-text text-transparent">
               Convert Your Lecture
             </motion.h1>
           </div>
@@ -56,17 +52,14 @@ export default function Dashboard() {
 
         {/* New Tab Style Toggle */}
         <div className="relative">
-          <SwitchTab uploadMethod={uploadMethod} setUploadMethod={setUploadMethod} />
+          <SwitchTab
+            uploadMethod={uploadMethod}
+            setUploadMethod={setUploadMethod}
+          />
         </div>
 
         {/* Main Content Area */}
-        <motion.div
-          className="relative group"
-          animate={{ scale: isHovering ? 1.01 : 1 }}
-          transition={{ duration: 0.2 }}
-          onHoverStart={() => setIsHovering(true)}
-          onHoverEnd={() => setIsHovering(false)}
-        >
+        <motion.div className="relative group" transition={{ duration: 0.2 }}>
           <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity" />
           <div className="bg-gradient-to-br from-gray-900/80 to-gray-950/80 border border-gray-800 rounded-2xl backdrop-blur-xl shadow-2xl p-6 sm:p-8">
             <motion.div
@@ -76,7 +69,7 @@ export default function Dashboard() {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
             >
-              {uploadMethod === 'link' ? (
+              {uploadMethod === "link" ? (
                 <LinkVideoSection setIsModalOpen={setIsModalOpen} />
               ) : (
                 <UploadVideoSection setIsModalOpen={setIsModalOpen} />
@@ -90,7 +83,13 @@ export default function Dashboard() {
       </div>
 
       {/* Status Modal */}
-      {isModalOpen && <MultiStepLoader loadingStates={loadingStates} loading={isModalOpen} duration={2000} />}
+      {isModalOpen && (
+        <MultiStepLoader
+          loadingStates={loadingStates}
+          loading={isModalOpen}
+          duration={2000}
+        />
+      )}
     </motion.main>
   );
 }
