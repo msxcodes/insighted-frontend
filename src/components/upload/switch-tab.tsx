@@ -19,11 +19,10 @@ export default function SwitchTab({
           <motion.button
             whileTap={{ scale: 0.98 }}
             onClick={() => setUploadMethod("link")}
-            className={`relative rounded-full px-6 py-3 flex items-center justify-center gap-2 transition-all duration-300 ${
-              uploadMethod === "link"
-                ? "text-white"
-                : "text-gray-400 hover:text-gray-300"
-            }`}
+            className={`relative rounded-full px-6 py-3 flex items-center justify-center gap-2 transition-all duration-300 ${uploadMethod === "link"
+              ? "text-white"
+              : "text-gray-400 hover:text-gray-300"
+              }`}
           >
             {uploadMethod === "link" && (
               <motion.div
@@ -39,11 +38,10 @@ export default function SwitchTab({
           <motion.button
             whileTap={{ scale: 0.98 }}
             onClick={() => setUploadMethod("video")}
-            className={`relative rounded-full px-6 py-3 flex items-center justify-center gap-2 transition-all duration-300 ${
-              uploadMethod === "video"
-                ? "text-white"
-                : "text-gray-400 hover:text-gray-300"
-            }`}
+            className={`relative rounded-full px-6 py-3 flex items-center justify-center gap-2 transition-all duration-300 ${uploadMethod === "video"
+              ? "text-white"
+              : "text-gray-400 hover:text-gray-300"
+              }`}
           >
             {uploadMethod === "video" && (
               <motion.div

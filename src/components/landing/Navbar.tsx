@@ -90,7 +90,7 @@ export function Navbar({ className }: NavbarProps) {
 
   const AuthButton = () => {
     return (
-      <Link href="/upload">
+      <Link href="/register">
         <Button
           variant="ghost"
           className="group relative bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 backdrop-blur-lg border border-white/10 hover:border-cyan-400/30 hover:from-cyan-500/30 hover:to-emerald-500/30 transition-all duration-300"

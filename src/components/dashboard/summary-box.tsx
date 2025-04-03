@@ -1,22 +1,22 @@
 import { motion } from 'framer-motion'
-import { Brain, Download, Maximize2 } from 'lucide-react'
-import React from 'react'
+import { Brain, Download, Maximize2, Minimize2 } from 'lucide-react'
+import React, { useState } from 'react'
 import MarkdownRenderer from '../common/markdown-view';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import NotesPDF from '../common/create-pdf';
 
 export default function SummaryBox({ summary }: { summary: string }) {
+    const [isExpanded, setIsExpanded] = useState(false);
     console.log(summary);
     return (
         <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="md:col-span-2 bg-gradient-to-br from-gray-900/80 to-gray-950/80 border border-gray-800 rounded-2xl p-6 backdrop-blur-xl"
+            className={`${isExpanded ? 'fixed inset-0 z-50 m-4' : 'md:col-span-2'} bg-gradient-to-br from-gray-900/80 to-gray-950/80 border border-gray-800 rounded-2xl p-6 backdrop-blur-xl transition-all duration-300`}
         >
             <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-semibold text-white">Document Preview</h2>
                 <div className="flex gap-2">
-
                     <PDFDownloadLink document={<NotesPDF notes={summary} />} fileName="document_notes.pdf">
                         {({ loading }) =>
                             loading ? (
@@ -34,9 +34,6 @@ export default function SummaryBox({ summary }: { summary: string }) {
                         }
                     </PDFDownloadLink>
 
-
-
-
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
@@ -50,26 +47,23 @@ export default function SummaryBox({ summary }: { summary: string }) {
             </div>
 
             {/* Document Preview Area */}
-            <div className="aspect-[16/9] rounded-lg border border-gray-800 bg-gray-900/50 p-4 overflow-hidden relative">
+            <div className={`${isExpanded ? 'h-[calc(100vh-12rem)]' : 'aspect-[16/9]'} rounded-lg border border-gray-800 bg-gray-900/50 p-4 overflow-hidden relative transition-all duration-300`}>
                 <div className="h-full overflow-y-auto space-y-4 text-gray-400">
-                    {/* Preview content here */}
                     <h3 className="text-lg font-medium text-white">Lecture Summary</h3>
-                    {/* {summary.map((item: any, index: number) => (
-                        <div key={index}>
-                            <h4 className="text-xl font-medium text-white">{item.heading}</h4>
-                            <p className="text-sm text-gray-400">{item.subPoints.length > 0 && item.subPoints[0].title}</p>
-                        </div>
-                    ))} */}
-
                     <MarkdownRenderer markdown={summary} />
-
                 </div>
-                <button
-                    className="absolute bottom-4 right-4 p-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors"
-                // onClick={() => setIsPreviewOpen(true)}
+                <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => setIsExpanded(!isExpanded)}
+                    className="absolute bottom-4 right-4 p-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors cursor-pointer"
                 >
-                    <Maximize2 className="w-4 h-4 text-gray-400" />
-                </button>
+                    {isExpanded ? (
+                        <Minimize2 className="w-4 h-4 text-gray-400" />
+                    ) : (
+                        <Maximize2 className="w-4 h-4 text-gray-400" />
+                    )}
+                </motion.button>
             </div>
         </motion.div>
     )

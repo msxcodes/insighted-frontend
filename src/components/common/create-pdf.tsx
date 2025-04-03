@@ -8,47 +8,66 @@ const styles = StyleSheet.create({
     },
     header: {
         marginBottom: 30,
+        padding: 20,
+        backgroundColor: '#f8fafc',
+        borderRadius: 8
     },
     title: {
-        fontSize: 24,
+        fontSize: 28,
         fontWeight: "bold",
         marginBottom: 10,
         textAlign: 'center',
-        color: '#1e293b'
+        color: '#0f172a'
     },
     subtitle: {
-        fontSize: 12,
+        fontSize: 14,
         textAlign: 'center',
-        color: '#64748b',
+        color: '#475569',
         marginBottom: 20
     },
     divider: {
-        borderBottom: 1,
+        borderBottom: 2,
         borderBottomColor: '#e2e8f0',
         marginBottom: 20
     },
     section: {
-        marginBottom: 15
+        marginBottom: 20,
+        padding: 15,
+        backgroundColor: '#f8fafc',
+        borderRadius: 8
     },
     mainHeading: {
+        fontSize: 20,
+        fontWeight: "bold",
+        marginBottom: 12,
+        color: '#0369a1',
+        paddingBottom: 8,
+        borderBottom: 2,
+        borderBottomColor: '#e2e8f0'
+    },
+    description: {
+        fontSize: 14,
+        lineHeight: 1.6,
+        color: '#334155',
+        marginBottom: 15
+    },
+    subHeading: {
         fontSize: 16,
         fontWeight: "bold",
         marginBottom: 8,
-        color: '#0284c7', // cyan-600
-        paddingBottom: 4,
-        borderBottom: 1,
-        borderBottomColor: '#e2e8f0'
+        marginTop: 12,
+        color: '#0f766e'
     },
-    subHeading: {
+    importantPoints: {
         fontSize: 14,
         fontWeight: "bold",
-        marginBottom: 6,
-        marginTop: 10,
-        color: '#0f766e' // teal-700
+        color: '#dc2626',
+        marginBottom: 8,
+        marginTop: 12
     },
     bulletPoint: {
         flexDirection: 'row',
-        marginBottom: 4,
+        marginBottom: 6,
         paddingLeft: 15
     },
     bullet: {
@@ -58,13 +77,13 @@ const styles = StyleSheet.create({
     },
     bulletText: {
         flex: 1,
-        fontSize: 12,
+        fontSize: 13,
         lineHeight: 1.6,
         color: '#334155'
     },
     nestedBulletPoint: {
         flexDirection: 'row',
-        marginBottom: 4,
+        marginBottom: 6,
         paddingLeft: 30
     },
     footer: {
@@ -94,18 +113,26 @@ const NotesPDF = ({ notes, title = "Lecture Notes", timestamp = new Date().toLoc
 
                 {/* Content */}
                 {notes.split('\n').map((line: string, index: number) => {
-                    // Main heading (starts with "- **" and ends with ":**")
-                    if (line.match(/^-\s+\*\*.*:\*\*/)) {
-                        const heading = line.replace(/^-\s+\*\*|\:\*\*$/g, '').trim();
+                    // Main heading with description (starts with "# " and ends with "**")
+                    if (line.match(/^#\s+.*\*\*/)) {
+                        const [heading, description] = line.replace(/^#\s+|\*\*$/g, '').split('**');
                         return (
                             <View key={index} style={styles.section}>
-                                <Text style={styles.mainHeading}>{heading}</Text>
+                                <Text style={styles.mainHeading}>{heading.trim()}</Text>
+                                <Text style={styles.description}>{description.trim()}</Text>
                             </View>
                         );
                     }
-                    // Sub heading (starts with "- **" but doesn't end with ":**")
-                    else if (line.match(/^-\s+\*\*.+\*\*/)) {
-                        const subheading = line.replace(/^-\s+\*\*|\*\*$/g, '').trim();
+                    // Important points (starts with "! ")
+                    else if (line.startsWith('! ')) {
+                        const text = line.replace(/^!\s+/, '').trim();
+                        return (
+                            <Text key={index} style={styles.importantPoints}>⚠️ {text}</Text>
+                        );
+                    }
+                    // Sub heading (starts with "## ")
+                    else if (line.startsWith('## ')) {
+                        const subheading = line.replace(/^##\s+/, '').trim();
                         return (
                             <Text key={index} style={styles.subHeading}>{subheading}</Text>
                         );
@@ -143,10 +170,3 @@ const NotesPDF = ({ notes, title = "Lecture Notes", timestamp = new Date().toLoc
 };
 
 export default NotesPDF;
-
-// Usage example:
-/*
-<PDFDownloadLink document={<NotesPDF notes={notesContent} title="API Overview" />} fileName="lecture-notes.pdf">
-    {({ loading }) => (loading ? 'Loading document...' : 'Download PDF')}
-</PDFDownloadLink>
-*/

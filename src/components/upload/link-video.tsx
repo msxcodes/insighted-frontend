@@ -32,8 +32,11 @@ export default function LinkVideoSection({
         youtubeUrl: videoUrl,
       });
 
-      toast.success("Video summarized successfully!");
-      router.push(`/results?summary=${encodeURIComponent(res.data.summary)}`);
+      if (res.status === 200) {
+        router.push(`/results?summary=${encodeURIComponent(res.data.summary)}`);
+        toast.success("Video summarized successfully!");
+      }
+
     } catch (error) {
       console.error("Error summarizing video:", error);
       toast.error("Failed to summarize the video. Please try again.");
@@ -64,11 +67,10 @@ export default function LinkVideoSection({
           boxShadow: "0 0 20px rgba(6, 182, 212, 0.3)",
         }}
         whileTap={{ scale: 0.98 }}
-        className={`w-full py-3 bg-gradient-to-r from-cyan-500 via-teal-800 to-emerald-500 rounded-lg font-medium text-white transition-all duration-300 ${
-          isLoading
-            ? "opacity-70 cursor-not-allowed"
-            : "cursor-pointer hover:opacity-90"
-        }`}
+        className={`w-full py-3 bg-gradient-to-r from-cyan-500 via-teal-800 to-emerald-500 rounded-lg font-medium text-white transition-all duration-300 ${isLoading
+          ? "opacity-70 cursor-not-allowed"
+          : "cursor-pointer hover:opacity-90"
+          }`}
         disabled={isLoading}
       >
         {isLoading ? "Processing..." : "Convert to Notes"}

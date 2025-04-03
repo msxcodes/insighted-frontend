@@ -6,6 +6,7 @@ import Image from "next/image"
 import MaxWidthWrapper from "../common/MaxWidthWrapper"
 import { Sparkles, ArrowRight } from "lucide-react"
 import { useRouter } from "next/navigation"
+import WatchDemo from "./watch-demo"
 export function Hero() {
     const controls = useAnimation()
     const [isLoaded, setIsLoaded] = useState(true)
@@ -86,13 +87,11 @@ export function Hero() {
                         transition={{ duration: 0.6, delay: 0.6 }}
                         className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
                     >
-                        <button onClick={() => router.push("/upload")} className="px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-emerald-500 text-white font-medium flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer">
+                        <button onClick={() => router.push("/register")} className="px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-emerald-500 text-white font-medium flex items-center gap-2 hover:scale-105 transition-transform cursor-pointer">
                             Get Started Free
                             <ArrowRight className="h-4 w-4" />
                         </button>
-                        <button className="px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 text-white font-medium hover:bg-white/20 transition-colors cursor-not-allowed opacity-70">
-                            Watch Demo
-                        </button>
+                        <WatchDemo />
                     </motion.div>
 
                     <motion.div
