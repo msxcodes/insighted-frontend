@@ -14,7 +14,7 @@ export async function POST(request: Request) {
     }
 
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/summarize`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/summary/generate-summary`,
       {
         youtubeUrl,
         isPremium: false,
