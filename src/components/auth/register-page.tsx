@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState } from "react"
 import { motion, useAnimation } from "framer-motion"
 import { useRouter } from "next/navigation"
 import { ArrowRight, Mail, Lock, User, Sparkles, Eye, EyeOff, Loader2, ArrowLeft } from "lucide-react"
@@ -16,28 +16,31 @@ export default function RegisterPage() {
     const [showConfirmPassword, setShowConfirmPassword] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [isHovered, setIsHovered] = useState(false)
+    const [formData, setFormData] = useState({
+        fullName: "",
+        email: "",
+        password: "",
+        confirmPassword: ""
+    })
 
-    const nameRef = useRef<HTMLInputElement>(null)
-    const emailRef = useRef<HTMLInputElement>(null)
-    const passwordRef = useRef<HTMLInputElement>(null)
-    const confirmPasswordRef = useRef<HTMLInputElement>(null)
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }))
+    }
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
 
-        const name = nameRef.current?.value
-        const email = emailRef.current?.value
-        const password = passwordRef.current?.value
-        const confirmPassword = confirmPasswordRef.current?.value
-
-        console.log(name, email, password, confirmPassword)
         // Basic validation
-        if (!name || !email || !password || !confirmPassword) {
+        if (!formData.fullName || !formData.email || !formData.password || !formData.confirmPassword) {
             toast.error("Please fill in all fields")
             return
         }
 
-        if (password !== confirmPassword) {
+        if (formData.password !== formData.confirmPassword) {
             toast.error("Passwords do not match")
             return
         }
@@ -45,20 +48,24 @@ export default function RegisterPage() {
         try {
             setIsLoading(true)
             const response = await axios.post("http://localhost:5001/api/v1/user/register", {
-                fullName: name,
-                email,
-                password
+                fullName: formData.fullName,
+                email: formData.email,
+                password: formData.password
+            }, {
+                headers: {
+                    "Content-Type": "application/json"
+                }
             })
-
-            console.log(response)
 
             if (response.status === 201) {
                 toast.success("Account created successfully!")
                 // Clear form
-                if (nameRef.current) nameRef.current.value = ""
-                if (emailRef.current) emailRef.current.value = ""
-                if (passwordRef.current) passwordRef.current.value = ""
-                if (confirmPasswordRef.current) confirmPasswordRef.current.value = ""
+                setFormData({
+                    fullName: "",
+                    email: "",
+                    password: "",
+                    confirmPassword: ""
+                })
                 router.push("/login")
             }
         } catch (error) {
@@ -94,8 +101,8 @@ export default function RegisterPage() {
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => router.back()}
-                        className="absolute top-6 left-6 p-2.5 rounded-full bg-black/30 border border-white/10 hover:bg-black/50 transition-all"
+                        onClick={() => router.push("/")}
+                        className="cursor-pointer absolute top-6 left-6 p-2.5 rounded-full bg-black/30 border border-white/10 hover:bg-black/50 transition-all"
                     >
                         <ArrowLeft className="h-6 w-6 text-gray-400" />
                     </motion.button>
@@ -147,7 +154,9 @@ export default function RegisterPage() {
                                     <User className="h-6 w-6 text-gray-400 group-hover:text-cyan-300 transition-colors" />
                                 </div>
                                 <input
-                                    ref={nameRef}
+                                    name="fullName"
+                                    value={formData.fullName}
+                                    onChange={handleChange}
                                     type="text"
                                     placeholder="Full Name"
                                     className="w-full pl-12 pr-6 py-4 text-lg bg-black/30 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all"
@@ -161,7 +170,9 @@ export default function RegisterPage() {
                                     <Mail className="h-6 w-6 text-gray-400 group-hover:text-cyan-300 transition-colors" />
                                 </div>
                                 <input
-                                    ref={emailRef}
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
                                     type="email"
                                     placeholder="Email address"
                                     className="w-full pl-12 pr-6 py-4 text-lg bg-black/30 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all"
@@ -175,7 +186,9 @@ export default function RegisterPage() {
                                     <Lock className="h-6 w-6 text-gray-400 group-hover:text-cyan-300 transition-colors" />
                                 </div>
                                 <input
-                                    ref={passwordRef}
+                                    name="password"
+                                    value={formData.password}
+                                    onChange={handleChange}
                                     type={showPassword ? "text" : "password"}
                                     placeholder="Password"
                                     className="w-full pl-12 pr-14 py-4 text-lg bg-black/30 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all"
@@ -200,7 +213,9 @@ export default function RegisterPage() {
                                     <Lock className="h-6 w-6 text-gray-400 group-hover:text-cyan-300 transition-colors" />
                                 </div>
                                 <input
-                                    ref={confirmPasswordRef}
+                                    name="confirmPassword"
+                                    value={formData.confirmPassword}
+                                    onChange={handleChange}
                                     type={showConfirmPassword ? "text" : "password"}
                                     placeholder="Confirm Password"
                                     className="w-full pl-12 pr-14 py-4 text-lg bg-black/30 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all"

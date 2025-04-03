@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         borderRadius: 8
     },
     title: {
-        fontSize: 28,
+        fontSize: 32,
         fontWeight: "bold",
         marginBottom: 10,
         textAlign: 'center',
@@ -31,43 +31,50 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     section: {
-        marginBottom: 20,
-        padding: 15,
+        marginBottom: 25,
+        padding: 20,
         backgroundColor: '#f8fafc',
-        borderRadius: 8
+        borderRadius: 8,
+        boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
     },
     mainHeading: {
-        fontSize: 20,
+        fontSize: 24,
         fontWeight: "bold",
-        marginBottom: 12,
+        marginBottom: 15,
         color: '#0369a1',
-        paddingBottom: 8,
+        paddingBottom: 10,
         borderBottom: 2,
-        borderBottomColor: '#e2e8f0'
+        borderBottomColor: '#e2e8f0',
+        textTransform: 'uppercase',
+        letterSpacing: 1
     },
     description: {
         fontSize: 14,
-        lineHeight: 1.6,
+        lineHeight: 1.8,
         color: '#334155',
         marginBottom: 15
     },
     subHeading: {
-        fontSize: 16,
+        fontSize: 18,
         fontWeight: "bold",
-        marginBottom: 8,
-        marginTop: 12,
-        color: '#0f766e'
+        marginBottom: 10,
+        marginTop: 15,
+        color: '#0f766e',
+        textDecoration: 'underline'
     },
     importantPoints: {
         fontSize: 14,
         fontWeight: "bold",
         color: '#dc2626',
-        marginBottom: 8,
-        marginTop: 12
+        marginBottom: 10,
+        marginTop: 15,
+        backgroundColor: '#fee2e2',
+        padding: 8,
+        borderRadius: 4
     },
     bulletPoint: {
         flexDirection: 'row',
-        marginBottom: 6,
+        marginBottom: 8,
         paddingLeft: 15
     },
     bullet: {
@@ -78,12 +85,12 @@ const styles = StyleSheet.create({
     bulletText: {
         flex: 1,
         fontSize: 13,
-        lineHeight: 1.6,
+        lineHeight: 1.8,
         color: '#334155'
     },
     nestedBulletPoint: {
         flexDirection: 'row',
-        marginBottom: 6,
+        marginBottom: 8,
         paddingLeft: 30
     },
     footer: {
@@ -118,7 +125,7 @@ const NotesPDF = ({ notes, title = "Lecture Notes", timestamp = new Date().toLoc
                         const [heading, description] = line.replace(/^#\s+|\*\*$/g, '').split('**');
                         return (
                             <View key={index} style={styles.section}>
-                                <Text style={styles.mainHeading}>{heading.trim()}</Text>
+                                <Text style={styles.mainHeading}>* {heading.trim()} *</Text>
                                 <Text style={styles.description}>{description.trim()}</Text>
                             </View>
                         );
@@ -134,7 +141,7 @@ const NotesPDF = ({ notes, title = "Lecture Notes", timestamp = new Date().toLoc
                     else if (line.startsWith('## ')) {
                         const subheading = line.replace(/^##\s+/, '').trim();
                         return (
-                            <Text key={index} style={styles.subHeading}>{subheading}</Text>
+                            <Text key={index} style={styles.subHeading}>* {subheading} *</Text>
                         );
                     }
                     // Nested bullet points (starts with multiple spaces/tabs and -)

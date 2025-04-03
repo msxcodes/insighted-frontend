@@ -96,8 +96,8 @@ export default function LoginPage() {
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => router.back()}
-                        className="absolute top-6 left-6 p-2.5 rounded-full bg-black/30 border border-white/10 hover:bg-black/50 transition-all"
+                        onClick={() => router.push("/")}
+                        className="cursor-pointer absolute top-6 left-6 p-2.5 rounded-full bg-black/30 border border-white/10 hover:bg-black/50 transition-all"
                     >
                         <ArrowLeft className="h-6 w-6 text-gray-400" />
                     </motion.button>
